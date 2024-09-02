@@ -1,0 +1,17 @@
+FROM openjdk:11-jre-slim
+
+WORKDIR /app
+
+# Copy only the ingestion-related code and build configuration
+COPY ./src/main/scala/ingestion/ /app/ingestion/
+COPY ./build.sbt /app/
+
+# Install sbt (Scala Build Tool)
+RUN apt-get update && apt-get install -y curl
+RUN curl -Ls https://piccolo.link/sbt-1.8.2.tgz | tar xz -C /usr/local && ln -s /usr/local/sbt/bin/sbt /usr/bin/sbt
+
+# Build the project
+RUN sbt clean compile
+
+# Set the entry point for this service
+CMD ["sbt", "run", "-DmainClass=ingestion.JsonIngestion"]

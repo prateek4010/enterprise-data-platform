@@ -1,0 +1,36 @@
+[
+    {
+      "eventId": "event001",
+      "eventType": "transaction",
+      "timestamp": "2024-09-02T12:34:56Z",
+      "eventDetails": {
+        "transactionId": "txn123",
+        "customerId": "cust001",
+        "amount": 150.75,
+        "currency": "USD",
+        "paymentMethod": "credit_card",
+        "location": {
+          "country": "US",
+          "city": "New York",
+          "ipAddress": "192.168.1.1"
+        },
+        "items": [
+          {
+            "itemId": "item001",
+            "itemName": "Laptop",
+            "quantity": 1,
+            "price": 1200.50
+          }
+        ]
+      },
+      "riskAssessment": {
+        "fraudScore": 72.5,
+        "isHighRisk": true,
+        "riskFactors": ["unusual_location", "large_amount"]
+      },
+      "metadata": {
+        "source": "mobile_app",
+        "campaign": "summer_sale"
+      }
+    }
+]
