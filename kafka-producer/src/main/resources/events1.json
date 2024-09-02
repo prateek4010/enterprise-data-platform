@@ -1,0 +1,548 @@
+[
+    {
+      "eventId": "event001",
+      "eventType": "transaction",
+      "timestamp": "2024-09-02T12:34:56Z",
+      "eventDetails": {
+        "transactionId": "txn123",
+        "customerId": "cust001",
+        "amount": 150.75,
+        "currency": "USD",
+        "paymentMethod": "credit_card",
+        "location": {
+          "country": "US",
+          "city": "New York",
+          "ipAddress": "192.168.1.1"
+        },
+        "items": [
+          {
+            "itemId": "item001",
+            "itemName": "Laptop",
+            "quantity": 1,
+            "price": 1200.50
+          }
+        ]
+      },
+      "riskAssessment": {
+        "fraudScore": 72.5,
+        "isHighRisk": true,
+        "riskFactors": ["unusual_location", "large_amount"]
+      },
+      "metadata": {
+        "source": "mobile_app",
+        "campaign": "summer_sale"
+      }
+    },
+    {
+      "eventId": "event002",
+      "eventType": "transaction",
+      "timestamp": "2024-09-02T13:20:00Z",
+      "eventDetails": {
+        "transactionId": "txn124",
+        "customerId": "cust002",
+        "amount": 75.25,
+        "currency": "USD",
+        "paymentMethod": "paypal",
+        "location": {
+          "country": "US",
+          "city": "San Francisco",
+          "ipAddress": "192.168.2.2"
+        },
+        "items": [
+          {
+            "itemId": "item002",
+            "itemName": "Headphones",
+            "quantity": 2,
+            "price": 75.25
+          }
+        ]
+      },
+      "riskAssessment": {
+        "fraudScore": 40.0,
+        "isHighRisk": false,
+        "riskFactors": []
+      },
+      "metadata": {
+        "source": "web",
+        "campaign": "back_to_school"
+      }
+    },
+    {
+      "eventId": "event003",
+      "eventType": "transaction",
+      "timestamp": "2024-09-02T14:45:00Z",
+      "eventDetails": {
+        "transactionId": "txn125",
+        "customerId": "cust003",
+        "amount": 299.99,
+        "currency": "USD",
+        "paymentMethod": "credit_card",
+        "location": {
+          "country": "US",
+          "city": "Chicago",
+          "ipAddress": "192.168.3.3"
+        },
+        "items": [
+          {
+            "itemId": "item003",
+            "itemName": "Smartwatch",
+            "quantity": 1,
+            "price": 299.99
+          }
+        ]
+      },
+      "riskAssessment": {
+        "fraudScore": 85.0,
+        "isHighRisk": true,
+        "riskFactors": ["large_amount"]
+      },
+      "metadata": {
+        "source": "mobile_app",
+        "campaign": "holiday_sale"
+      }
+    },
+    {
+      "eventId": "event004",
+      "eventType": "account_creation",
+      "timestamp": "2024-09-02T08:00:00Z",
+      "eventDetails": {
+        "customerId": "cust004",
+        "email": "newuser1@example.com",
+        "phone": "+1-555-0001",
+        "accountCreationDate": "2024-09-01T10:00:00Z",
+        "referralCode": "REF001"
+      },
+      "metadata": {
+        "source": "web",
+        "campaign": "welcome_offer"
+      }
+    },
+    {
+      "eventId": "event005",
+      "eventType": "account_creation",
+      "timestamp": "2024-09-02T09:15:00Z",
+      "eventDetails": {
+        "customerId": "cust005",
+        "email": "newuser2@example.com",
+        "phone": "+1-555-0002",
+        "accountCreationDate": "2024-09-01T11:00:00Z",
+        "referralCode": "REF002"
+      },
+      "metadata": {
+        "source": "mobile_app",
+        "campaign": "new_user_discount"
+      }
+    },
+    {
+      "eventId": "event006",
+      "eventType": "account_creation",
+      "timestamp": "2024-09-02T10:30:00Z",
+      "eventDetails": {
+        "customerId": "cust006",
+        "email": "newuser3@example.com",
+        "phone": "+1-555-0003",
+        "accountCreationDate": "2024-09-01T12:00:00Z",
+        "referralCode": "REF003"
+      },
+      "metadata": {
+        "source": "web",
+        "campaign": "signup_bonuses"
+      }
+    },
+    {
+      "eventId": "event007",
+      "eventType": "login",
+      "timestamp": "2024-09-02T08:30:00Z",
+      "eventDetails": {
+        "customerId": "cust007",
+        "loginTime": "2024-09-02T08:30:00Z",
+        "location": {
+          "country": "US",
+          "city": "Los Angeles",
+          "ipAddress": "192.168.4.4"
+        },
+        "deviceType": "desktop",
+        "loginSuccess": true
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event008",
+      "eventType": "login",
+      "timestamp": "2024-09-02T09:45:00Z",
+      "eventDetails": {
+        "customerId": "cust008",
+        "loginTime": "2024-09-02T09:45:00Z",
+        "location": {
+          "country": "US",
+          "city": "Seattle",
+          "ipAddress": "192.168.5.5"
+        },
+        "deviceType": "mobile",
+        "loginSuccess": true
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event009",
+      "eventType": "login",
+      "timestamp": "2024-09-02T11:00:00Z",
+      "eventDetails": {
+        "customerId": "cust009",
+        "loginTime": "2024-09-02T11:00:00Z",
+        "location": {
+          "country": "US",
+          "city": "Boston",
+          "ipAddress": "192.168.6.6"
+        },
+        "deviceType": "tablet",
+        "loginSuccess": false
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event010",
+      "eventType": "password_change",
+      "timestamp": "2024-09-02T09:00:00Z",
+      "eventDetails": {
+        "customerId": "cust010",
+        "oldPasswordHash": "oldhash001",
+        "newPasswordHash": "newhash001"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event011",
+      "eventType": "password_change",
+      "timestamp": "2024-09-02T10:15:00Z",
+      "eventDetails": {
+        "customerId": "cust011",
+        "oldPasswordHash": "oldhash002",
+        "newPasswordHash": "newhash002"
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event012",
+      "eventType": "password_change",
+      "timestamp": "2024-09-02T11:30:00Z",
+      "eventDetails": {
+        "customerId": "cust012",
+        "oldPasswordHash": "oldhash003",
+        "newPasswordHash": "newhash003"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event013",
+      "eventType": "payment_method_update",
+      "timestamp": "2024-09-02T10:00:00Z",
+      "eventDetails": {
+        "customerId": "cust013",
+        "paymentMethod": "credit_card",
+        "previousMethod": "paypal",
+        "updateTime": "2024-09-02T09:55:00Z"
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event014",
+      "eventType": "payment_method_update",
+      "timestamp": "2024-09-02T11:15:00Z",
+      "eventDetails": {
+        "customerId": "cust014",
+        "paymentMethod": "paypal",
+        "previousMethod": "credit_card",
+        "updateTime": "2024-09-02T11:00:00Z"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event015",
+      "eventType": "payment_method_update",
+      "timestamp": "2024-09-02T12:30:00Z",
+      "eventDetails": {
+        "customerId": "cust015",
+        "paymentMethod": "crypto",
+        "previousMethod": "credit_card",
+        "updateTime": "2024-09-02T12:15:00Z"
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event016",
+      "eventType": "order_cancellation",
+      "timestamp": "2024-09-02T11:45:00Z",
+      "eventDetails": {
+        "orderId": "order123",
+        "customerId": "cust016",
+        "cancellationReason": "Changed my mind",
+        "cancellationTime": "2024-09-02T11:40:00Z"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event017",
+      "eventType": "order_cancellation",
+      "timestamp": "2024-09-02T13:00:00Z",
+      "eventDetails": {
+        "orderId": "order124",
+        "customerId": "cust017",
+        "cancellationReason": "Item out of stock",
+        "cancellationTime": "2024-09-02T12:55:00Z"
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event018",
+      "eventType": "order_cancellation",
+      "timestamp": "2024-09-02T14:15:00Z",
+      "eventDetails": {
+        "orderId": "order125",
+        "customerId": "cust018",
+        "cancellationReason": "Pricing error",
+        "cancellationTime": "2024-09-02T14:00:00Z"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event019",
+      "eventType": "refund",
+      "timestamp": "2024-09-02T10:45:00Z",
+      "eventDetails": {
+        "refundId": "refund001",
+        "orderId": "order123",
+        "customerId": "cust019",
+        "refundAmount": 150.75,
+        "currency": "USD",
+        "refundReason": "Order returned"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event020",
+      "eventType": "refund",
+      "timestamp": "2024-09-02T12:00:00Z",
+      "eventDetails": {
+        "refundId": "refund002",
+        "orderId": "order124",
+        "customerId": "cust020",
+        "refundAmount": 75.25,
+        "currency": "USD",
+        "refundReason": "Item defective"
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event021",
+      "eventType": "refund",
+      "timestamp": "2024-09-02T13:15:00Z",
+      "eventDetails": {
+        "refundId": "refund003",
+        "orderId": "order125",
+        "customerId": "cust021",
+        "refundAmount": 299.99,
+        "currency": "USD",
+        "refundReason": "Order canceled"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event022",
+      "eventType": "profile_update",
+      "timestamp": "2024-09-02T08:45:00Z",
+      "eventDetails": {
+        "customerId": "cust022",
+        "updateTime": "2024-09-02T08:40:00Z",
+        "updatedFields": ["email", "phone"],
+        "previousValues": {
+          "email": "oldemail@example.com",
+          "phone": "+1-555-0004"
+        },
+        "newValues": {
+          "email": "newemail@example.com",
+          "phone": "+1-555-0005"
+        }
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event023",
+      "eventType": "profile_update",
+      "timestamp": "2024-09-02T09:30:00Z",
+      "eventDetails": {
+        "customerId": "cust023",
+        "updateTime": "2024-09-02T09:25:00Z",
+        "updatedFields": ["address"],
+        "previousValues": {
+          "address": "123 Old St"
+        },
+        "newValues": {
+          "address": "456 New St"
+        }
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event024",
+      "eventType": "profile_update",
+      "timestamp": "2024-09-02T10:00:00Z",
+      "eventDetails": {
+        "customerId": "cust024",
+        "updateTime": "2024-09-02T09:55:00Z",
+        "updatedFields": ["name"],
+        "previousValues": {
+          "name": "John Doe"
+        },
+        "newValues": {
+          "name": "John Smith"
+        }
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event025",
+      "eventType": "fraud_alert",
+      "timestamp": "2024-09-02T11:00:00Z",
+      "eventDetails": {
+        "alertId": "fraud001",
+        "customerId": "cust025",
+        "alertType": "suspicious_login",
+        "alertTime": "2024-09-02T10:55:00Z",
+        "fraudDetails": "Unknown device with no ip address"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event026",
+      "eventType": "fraud_alert",
+      "timestamp": "2024-09-02T12:15:00Z",
+      "eventDetails": {
+        "alertId": "fraud002",
+        "customerId": "cust026",
+        "alertType": "large_amount",
+        "alertTime": "2024-09-02T12:10:00Z",
+        "fraudDetails": "Amount is larger than 5000 Euros"
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event027",
+      "eventType": "fraud_alert",
+      "timestamp": "2024-09-02T13:30:00Z",
+      "eventDetails": {
+        "alertId": "fraud003",
+        "customerId": "cust027",
+        "alertType": "multiple_failed_logins",
+        "alertTime": "2024-09-02T13:25:00Z",
+        "fraudDetails": "5 attempts in last 1 minute"
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event028",
+      "eventType": "cart_abandonment",
+      "timestamp": "2024-09-02T10:30:00Z",
+      "eventDetails": {
+        "cartId": "cart001",
+        "customerId": "cust028",
+        "abandonmentTime": "2024-09-02T10:15:00Z",
+        "items": [
+          {
+            "itemId": "item004",
+            "itemName": "Smartphone",
+            "quantity": 1,
+            "price": 699.99
+          }
+        ]
+      },
+      "metadata": {
+        "source": "web"
+      }
+    },
+    {
+      "eventId": "event029",
+      "eventType": "cart_abandonment",
+      "timestamp": "2024-09-02T11:45:00Z",
+      "eventDetails": {
+        "cartId": "cart002",
+        "customerId": "cust029",
+        "abandonmentTime": "2024-09-02T11:30:00Z",
+        "items": [
+          {
+            "itemId": "item005",
+            "itemName": "Tablet",
+            "quantity": 2,
+            "price": 399.99
+          }
+        ]
+      },
+      "metadata": {
+        "source": "mobile_app"
+      }
+    },
+    {
+      "eventId": "event030",
+      "eventType": "cart_abandonment",
+      "timestamp": "2024-09-02T13:00:00Z",
+      "eventDetails": {
+        "cartId": "cart003",
+        "customerId": "cust030",
+        "abandonmentTime": "2024-09-02T12:45:00Z",
+        "items": [
+          {
+            "itemId": "item006",
+            "itemName": "Headphones",
+            "quantity": 1,
+            "price": 129.99
+          }
+        ]
+      },
+      "metadata": {
+        "source": "web"
+      }
+    }
+  ]
+  
