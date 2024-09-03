@@ -18,16 +18,16 @@ build-kafka-producer:
 	$(DOCKER) build -f docker/Dockerfile-kafka-producer -t kafka-producer .
 
 build-ingestion:
-	$(DOCKER) build -f docker/Dockerfile-ingestion -t $(PROJECT_DIR)/ingestion .
+	$(DOCKER) build -f docker/Dockerfile-ingestion -t ingestion .
 
 build-processing:
-	$(DOCKER) build -f docker/Dockerfile-transformation -t $(PROJECT_DIR)/transformation .
+	$(DOCKER) build -f docker/Dockerfile-transformation -t transformation .
 
 build-storage:
-	$(DOCKER) build -f docker/Dockerfile-storage -t $(PROJECT_DIR)/storage .
+	$(DOCKER) build -f docker/Dockerfile-storage -t storage .
 
 build-serving:
-	$(DOCKER) build -f docker/Dockerfile-serving -t $(PROJECT_DIR)/serving .
+	$(DOCKER) build -f docker/Dockerfile-serving -t serving .
 
 
 # Start individual services

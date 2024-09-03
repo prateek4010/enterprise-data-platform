@@ -5,8 +5,10 @@ lazy val commonSettings = Seq(
     "com.typesafe" % "config" % "1.4.1",
     "org.apache.kafka" %% "kafka" % "3.0.0",
     "org.apache.kafka" % "kafka-clients" % "3.3.1",
+    "org.apache.flink" %% "flink-scala" % "1.14.0",
     "org.apache.flink" %% "flink-streaming-scala" % "1.14.0",
     "org.apache.flink" %% "flink-connector-kafka" % "1.14.0",
+    "org.apache.flink" %% "flink-clients" % "1.14.0",
     "io.circe" %% "circe-core" % "0.14.5",
     "io.circe" %% "circe-generic" % "0.14.5",
     "io.circe" %% "circe-parser" % "0.14.5"

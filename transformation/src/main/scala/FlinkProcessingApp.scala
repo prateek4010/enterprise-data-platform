@@ -1,5 +1,3 @@
-package transformation
-
 import org.apache.flink.api.common.functions.MapFunction
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.api.windowing.time.Time
@@ -36,7 +34,6 @@ object FlinkProcessingApp {
           // Parse JSON and convert to YourDataType
         }
       })
-      .filter(/* Add filter criteria */)
 
 
     // Push data to another Kafka topic

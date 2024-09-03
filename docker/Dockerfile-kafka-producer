@@ -16,5 +16,7 @@ RUN curl -Ls https://github.com/sbt/sbt/releases/download/v1.8.2/sbt-1.8.2.tgz |
 # Build the project
 RUN sbt "project kafkaProducer" clean compile
 
+RUN chmod +x /app/kafka-producer-start.sh
+
 # Set the entry point for this service
 ENTRYPOINT ["/app/kafka-producer-start.sh"]

@@ -88,6 +88,8 @@ object KafkaProducerApp {
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("fetch.message.max.bytes", "2000000000")
+    props.put("linger.ms", "0") 
+    props.put("acks", "all") 
     // props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
     // props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
     // props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
@@ -114,8 +116,15 @@ object KafkaProducerApp {
               println("============")
               println(event)
               val record = new ProducerRecord[String, String]("raw-events", 0, event.eventId, event.asJson.noSpaces)
-              println("+++++Record++++")
-              producer.send(record)
+              println("++|++Record++|+")
+              producer.send(record, (metadata, exception) => {
+                  if (exception != null) {
+                    println(s"Send failed: ${exception.getMessage}")
+                  } else {
+                    println(s"Sent record to topic ${metadata.topic()} partition ${metadata.partition()} with offset ${metadata.offset()}")
+                  }
+                }
+              )
               println(s"${record}")
               println("+++++++++\n\n")
             }
