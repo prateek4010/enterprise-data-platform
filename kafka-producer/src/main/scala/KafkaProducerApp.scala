@@ -87,10 +87,7 @@ object KafkaProducerApp {
     props.put("bootstrap.servers", "localhost:9092")
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-    props.put("acks", "1")  // Adjust as needed
-    props.put("batch.size", "16384")  // Adjust as needed
-    props.put("linger.ms", "100")  // Adjust as needed
-    props.put("retries", "3")  // Adjust as needed
+    props.put("fetch.message.max.bytes", "2000000000")
     // props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
     // props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
     // props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
@@ -116,7 +113,7 @@ object KafkaProducerApp {
             events.foreach { event =>
               println("============")
               println(event)
-              val record = new ProducerRecord[String, String]("events", 0, event.eventId, event.asJson.noSpaces)
+              val record = new ProducerRecord[String, String]("raw-events", 0, event.eventId, event.asJson.noSpaces)
               println("+++++Record++++")
               producer.send(record)
               println(s"${record}")

@@ -2,10 +2,10 @@ FROM openjdk:11-jre-slim
 
 WORKDIR /app
 
-# Copy only the Ingestion-related code and build configuration
-COPY ./ingestion/src/main/scala/FlinkIngestionApp.scala /app/ingestion/src/main/scala/
+# Copy only the Storage-related code and build configuration
+COPY ./storage/src/main/scala/FlinkStorageApp.scala /app/storage/src/main/scala/
 COPY ./build.sbt /app/
-COPY ./scripts/ingestion-start.sh /app/
+COPY ./scripts/storage-start.sh /app/
 
 # Install sbt (Scala Build Tool)
 RUN apt-get update && apt-get install -y curl
@@ -13,7 +13,7 @@ RUN curl -Ls https://github.com/sbt/sbt/releases/download/v1.8.2/sbt-1.8.2.tgz |
 
 
 # Build the project
-RUN sbt "project ingestion" clean compile
+RUN sbt "project storage" clean compile
 
 # Set the entry point for this service
-ENTRYPOINT ["/app/ingestion-start.sh"]
+ENTRYPOINT ["/app/storage-start.sh"]

@@ -3,9 +3,9 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy only the Ingestion-related code and build configuration
-COPY ./ingestion/src/main/scala/FlinkIngestionApp.scala /app/ingestion/src/main/scala/
+COPY ./transformation/src/main/scala/FlinkProcessingApp.scala /app/transformation/src/main/scala/
 COPY ./build.sbt /app/
-COPY ./scripts/ingestion-start.sh /app/
+COPY ./scripts/transformation-start.sh /app/
 
 # Install sbt (Scala Build Tool)
 RUN apt-get update && apt-get install -y curl
@@ -13,7 +13,7 @@ RUN curl -Ls https://github.com/sbt/sbt/releases/download/v1.8.2/sbt-1.8.2.tgz |
 
 
 # Build the project
-RUN sbt "project ingestion" clean compile
+RUN sbt "project transformation" clean compile
 
 # Set the entry point for this service
-ENTRYPOINT ["/app/ingestion-start.sh"]
+ENTRYPOINT ["/app/transformation-start.sh"]

@@ -1,40 +1,72 @@
-# Variables
-DOCKER_COMPOSE_FILE = docker-compose.yml
+# Define variables
+DOCKER_COMPOSE = docker-compose
+DOCKER = docker
+SBT = sbt
+PROJECT_DIR = enterprise-data-platform
+
+# Define services
+SERVICES = kafka-producer ingestion transformation storage serving
+
 
 # Default target
-.DEFAULT_GOAL := help
+all: build
 
-# List of targets with descriptions
-help:
-	@echo "Available targets:"
-	@echo "  make build                Build the project"
-	@echo "  make start-services       Start all services using Docker Compose"
-	@echo "  make deploy               Deploy the application"
-	@echo "  make data-migration       Run the data migration script"
-	@echo "  make test                 Run all tests"
-	@echo "  make clean                Clean up Docker containers and images"
+# Build Docker images for all services according to docker-compose.yml
+build: build-kafka-producer build-ingestion build-processing build-storage build-serving
 
-# Build the project
-build:
-	sbt clean compile
+build-kafka-producer:
+	$(DOCKER) build -f docker/Dockerfile-kafka-producer -t kafka-producer .
 
-# Start all services using Docker Compose
-start-services:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
+build-ingestion:
+	$(DOCKER) build -f docker/Dockerfile-ingestion -t $(PROJECT_DIR)/ingestion .
 
-# Deploy the application
-deploy:
-	# Add deployment commands here, e.g., using Terraform, Helm, etc.
-	echo "Deploying the application..."
+build-processing:
+	$(DOCKER) build -f docker/Dockerfile-transformation -t $(PROJECT_DIR)/transformation .
 
-# Run the data migration script
-data-migration:
-	python3 ./scripts/data-migration.py
+build-storage:
+	$(DOCKER) build -f docker/Dockerfile-storage -t $(PROJECT_DIR)/storage .
 
-# Run all tests
-test:
-	sbt test
+build-serving:
+	$(DOCKER) build -f docker/Dockerfile-serving -t $(PROJECT_DIR)/serving .
 
-# Clean up Docker containers and images
+
+# Start individual services
+start-kafka-producer:
+	$(DOCKER_COMPOSE) up -d kafka-producer
+
+start-ingestion:
+	$(DOCKER_COMPOSE) up -d ingestion
+
+start-processing:
+	$(DOCKER_COMPOSE) up -d processing
+
+start-storage:
+	$(DOCKER_COMPOSE) up -d storage
+
+start-serving:
+	$(DOCKER_COMPOSE) up -d serving
+
+# Start all services
+start-all: 
+	$(DOCKER_COMPOSE) up -d
+
+
+# Stop and remove services
+down:
+	$(DOCKER_COMPOSE) down
+
+# Stop, remove containers, and remove images
 clean:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down --rmi all --volumes --remove-orphans
+	$(DOCKER_COMPOSE) down --rmi all --volumes --remove-orphans
+
+# Build the project with sbt
+build-sbt:
+	$(SBT) clean compile
+
+# Run tests with sbt
+test:
+	$(SBT) test
+
+# Show status of running services
+status:
+	$(DOCKER_COMPOSE) ps
