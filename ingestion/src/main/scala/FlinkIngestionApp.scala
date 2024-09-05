@@ -13,6 +13,14 @@ object FlinkIngestionApp {
   def main(args: Array[String]): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
 
+    env.enableCheckpointing(300000) // 5 minutes
+
+    // Configure advanced options for checkpoints
+    val checkpointConfig = env.getCheckpointConfig
+    checkpointConfig.setCheckpointTimeout(60000) // 60 seconds
+    checkpointConfig.setMinPauseBetweenCheckpoints(50000) // Minimum pause between checkpoints
+    checkpointConfig.setMaxConcurrentCheckpoints(1) // Allow only one checkpoint at a time
+
     // Configure a failure rate restart strategy with a maximum failure rate of 5 per hour and a delay of 30 seconds between restarts
     env.setRestartStrategy(RestartStrategies.failureRateRestart(
       5,                  // Maximum failure rate (failures per hour)
@@ -23,14 +31,11 @@ object FlinkIngestionApp {
     // Kafka configuration
     val properties = new Properties()
     properties.setProperty("group.id", "flink-consumer-group")
-    properties.put("bootstrap.servers", "localhost:9092")
-    properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-    properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+    properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
+    properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer].getName)
+    properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer].getName)
     properties.put("fetch.message.max.bytes", "2000000000")
-    // properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
-    // properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer].getName)
-    // properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer].getName)
-
+    
     // Create Kafka consumer
     val kafkaConsumer = new FlinkKafkaConsumer[String]("raw-events", new SimpleStringSchema(), properties)
 
