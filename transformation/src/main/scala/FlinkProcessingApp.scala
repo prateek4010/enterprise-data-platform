@@ -32,6 +32,8 @@ object FlinkProcessingApp {
     // Read data from Kafka
     val stream = env.addSource(kafkaConsumer)
 
+    // Quality checks
+
     val processedStream = inputStream
       .map { eventString =>
         // Parse the JSON string into an Event case class

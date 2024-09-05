@@ -44,6 +44,8 @@ object FlinkIngestionApp {
     println("+++++Record++++")
     stream.print()
 
+    // Quality checks
+
     // Parse JSON and filter valid data
     val transformedStream = stream
       // .filter(/* Add filter criteria */)
