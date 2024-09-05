@@ -84,16 +84,13 @@ object KafkaProducerApp {
   def main(args: Array[String]): Unit = {
     // Configure Kafka Producer
     val props = new Properties()
-    props.put("bootstrap.servers", "localhost:9092")
-    props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-    props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
+    props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
+    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
     props.put("fetch.message.max.bytes", "2000000000")
     props.put("linger.ms", "0") 
     props.put("acks", "all") 
-    // props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
-    // props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
-    // props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
-
+    
     val producer = new KafkaProducer[String, String](props)
 
     // Load JSON file from classpath

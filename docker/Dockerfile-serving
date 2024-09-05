@@ -3,7 +3,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy only the Serving-related code and build configuration
-COPY ./serving/src/main/scala/FlinkServingApp.scala /app/serving/src/main/scala/
+COPY ./serving/src/main/scala/ServingApp.scala /app/serving/src/main/scala/
 COPY ./build.sbt /app/
 COPY ./scripts/serving-start.sh /app/
 

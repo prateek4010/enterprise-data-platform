@@ -11,7 +11,9 @@ lazy val commonSettings = Seq(
     "org.apache.flink" %% "flink-clients" % "1.14.0",
     "io.circe" %% "circe-core" % "0.14.5",
     "io.circe" %% "circe-generic" % "0.14.5",
-    "io.circe" %% "circe-parser" % "0.14.5"
+    "io.circe" %% "circe-parser" % "0.14.5",
+    "com.amazonaws" % "aws-java-sdk-dynamodb" % "1.12.507",
+    "com.softwaremill.sttp.client3" %% "core" % "3.8.0"
   )
 )
 
@@ -61,6 +63,6 @@ lazy val serving = (project in file("serving"))
   .dependsOn(common)
   .settings(
     name := "serving",
-    mainClass in Compile := Some("FlinkServingApp")
+    mainClass in Compile := Some("ServingApp")
   )
   .settings(commonSettings: _*)
