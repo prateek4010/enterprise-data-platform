@@ -42,10 +42,10 @@ object ServingApp {
         val eventJson = record.value()
 
         // Fetch data from DynamoDB using customerId (assuming it's stored in DynamoDB)
-        val eventData = fetchFromDynamoDB(customerId, dynamoDbClient)
+        val customerData = fetchFromDynamoDB(customerId, dynamoDbClient)
 
         // Call external Decision Service API with event data
-        val response = callExternalAPI(eventJson, eventData)
+        val response = callExternalAPI(eventJson, customerData)
 
         println(s"API Response for customer $customerId: $response")
       }
